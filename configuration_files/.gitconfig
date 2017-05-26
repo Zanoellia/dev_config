@@ -67,6 +67,11 @@
 	# autocorrected command.
 	autocorrect = 15
 
+[fetch]
+	# Fetch will automatically remove any tracking references that no
+	# longer exist.
+	prune = true
+
 # Useful links:
 #   - https://jason.pureconcepts.net/2017/03/stop-aliasing-core-git-commands/
 #   - https://git-scm.com/book/tr/v2/Customizing-Git-Git-Configuration
