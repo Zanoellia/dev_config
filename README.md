@@ -1,2 +1,3 @@
 # dev_config
-Configurations files for my dev tools.
+Configurations files for my dev tools:
+ - Git

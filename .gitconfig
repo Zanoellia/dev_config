@@ -1,0 +1,73 @@
+[user]
+	name = # TODO
+	email = # TODO
+
+[core]
+	# Use Emacs in console mode as default editor
+	editor = emacs -nw
+
+	# Don't consider trailing space change as a cause for merge conflicts
+	whitespace = -trailing-space
+
+	# On a Linux system that uses LF line endings (OxOA, \n), you don’t
+	# want Git to automatically convert them when you check out files;
+	# however, if a file with CRLF endings accidentally gets introduced,
+	# Git will convert CRLF to LF on commit but not the other way around
+	autocrlf = input
+
+	# Warn about whitespace issues: trailing  whitespaces and tab
+	# indentation in a portion of a line.
+	# Git will detect and try to color issues so you can fix them when:
+	#   - Run a git diff command
+	#   - Apply patches with git apply.
+	#   - Use git rebase command
+	whitespace = warn,trailing-space,tab-in-indent
+
+[color]
+	# Enable colors in color-supporting terminals
+	ui = auto
+
+[push]
+	# Push the current branch to its upstream branch but refuses to push if
+	# the upstream branch’s name is different from the local one.
+	default = simple
+
+[alias]
+	# My own shortcuts
+	s = status -s
+        st = status
+        rz = reset --hard HEAD
+        rzrc = reset --hard baseline/rc
+        lol = log --graph --decorate --pretty=oneline --abbrev-commit
+        lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	can = commit --ammend --no-edit
+	# Display the name of the current branch
+        cbr = "!git branch | grep \"^\\*\" | cut -d \" \" -f 2"
+
+[merge]
+	tool = meld
+
+[log]
+	# Use abbrev SHAs whenever possible/relevant instead of full 40 chars
+	abbrevCommit = true
+
+[diff]
+	# Use better, descriptive initials (c, i, w) instead of a/b.
+	mnemonicPrefix = true
+	# Show renames/moves as such
+	renames = true
+
+[tag]
+	# Sort tags as version numbers whenever applicable, so 1.10.2 is
+	# AFTER 1.2.0.
+	sort = version:refname
+
+[help]
+	# Git will give you 1.5 second to change your mind before executing the
+	# autocorrected command.
+	autocorrect = 15
+
+# Useful links:
+#   - https://jason.pureconcepts.net/2017/03/stop-aliasing-core-git-commands/
+#   - https://git-scm.com/book/tr/v2/Customizing-Git-Git-Configuration
+#   - https://gist.github.com/tdd/470582
