@@ -1,6 +1,6 @@
 [user]
-	name = # TODO
-	email = # TODO
+	name = #TODO
+	email = #TODO
 
 [core]
 	# Use Emacs in console mode as default editor
@@ -41,15 +41,16 @@
 
 [alias]
 	# My own shortcuts
+	co = checkout
 	s = status -s
-        st = status
-        rz = reset --hard HEAD
-        rzrc = reset --hard baseline/rc
-        lol = log --graph --decorate --pretty=oneline --abbrev-commit
-        lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
-	can = commit --ammend --no-edit
+	st = status
+	rz = reset --hard HEAD
+	rzrc = reset --hard baseline/rc
+	lol = log --graph --decorate --pretty=oneline --abbrev-commit
+	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	can = commit --amend --no-edit
 	# Display the name of the current branch
-        cbr = "!git branch | grep \"^\\*\" | cut -d \" \" -f 2"
+	cbr = "!git branch | grep \"^\\*\" | cut -d \" \" -f 2"
 	# For a raw diff to save as a patch for emailing or later application
 	# which can then be used as `git patch > changes.patch`
 	patch = !git --no-pager diff --no-color
