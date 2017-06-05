@@ -22,6 +22,13 @@
 	#   - Apply patches with git apply.
 	#   - Use git rebase command
 	whitespace = warn,trailing-space,tab-in-indent
+	# Enable diff-so-fancy. Put an extra emphasis on the changed parts.
+	pager = diff-so-fancy | less --tabs=4 -RFX
+
+[pager]
+	# Pre-seed your less pager with a search pattern, move between files
+	# with n/N keys:
+	# diff = diff-so-fancy | less --tabs=4 -RFX --pattern '^(Date|added|deleted|modified): '
 
 [color]
 	# Enable colors in color-supporting terminals
@@ -43,6 +50,9 @@
 	can = commit --ammend --no-edit
 	# Display the name of the current branch
         cbr = "!git branch | grep \"^\\*\" | cut -d \" \" -f 2"
+	# For a raw diff to save as a patch for emailing or later application
+	# which can then be used as `git patch > changes.patch`
+	patch = !git --no-pager diff --no-color
 
 [merge]
 	tool = meld
@@ -52,10 +62,13 @@
 	abbrevCommit = true
 
 [diff]
+	# Following options are useless as long diff-so-fancy is used.
 	# Use better, descriptive initials (c, i, w) instead of a/b.
 	mnemonicPrefix = true
 	# Show renames/moves as such
 	renames = true
+	# Better diffs with blank line boundaries for hunks.
+	compactionHeuristic = true
 
 [tag]
 	# Sort tags as version numbers whenever applicable, so 1.10.2 is
@@ -72,7 +85,23 @@
 	# longer exist.
 	prune = true
 
+[interactive]
+	# Diffs shown by the interactive patch-staging tool also uses
+	# diff-so-fancy
+	diffFilter = diff-so-fancy | less --tabs=4 -RFX
+
+# NOTES
+#   - diff-highlight
+#     - https://github.com/git/git/tree/master/contrib/diff-highlight
+#     - diff-highlight dir is in ~/bin/ with chmod+x
+#     - export PATH="$PATH::$HOME/.git/diff-highlight"
+#   - diff-so-fancy
+#     - https://github.com/so-fancy/diff-so-fancy
+#     - diff-so-fancy dir in ~/bin/ with chmod+x
+#     - export PATH="$PATH:$HOME/.git/diff-so-fancy"
+
 # Useful links:
 #   - https://jason.pureconcepts.net/2017/03/stop-aliasing-core-git-commands/
 #   - https://git-scm.com/book/tr/v2/Customizing-Git-Git-Configuration
 #   - https://gist.github.com/tdd/470582
+#   - https://github.com/blog/2188-git-2-9-has-been-released#beautiful-diffs
