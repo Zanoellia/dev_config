@@ -94,11 +94,11 @@
 # NOTES
 #   - diff-highlight
 #     - https://github.com/git/git/tree/master/contrib/diff-highlight
-#     - diff-highlight dir is in ~/bin/ with chmod+x
+#     - diff-highlight dir is in ~/.git/ with chmod+x
 #     - export PATH="$PATH::$HOME/.git/diff-highlight"
 #   - diff-so-fancy
 #     - https://github.com/so-fancy/diff-so-fancy
-#     - diff-so-fancy dir in ~/bin/ with chmod+x
+#     - diff-so-fancy dir in ~/.git/ with chmod+x
 #     - export PATH="$PATH:$HOME/.git/diff-so-fancy"
 
 # Useful links:
