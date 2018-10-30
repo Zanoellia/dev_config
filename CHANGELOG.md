@@ -2,9 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
-# 2017, Q2
+## 2018, Q4
 
-## Added
+### Added
+
+- Configuration for Bash
+
+### Fixed
+
+- Typo in gitconfig file
+
+## 2017, Q2
+
+### Added
+
 - Creation of the project
 - Configuration for Git
 - Configuration for Emacs
