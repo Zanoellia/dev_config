@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 ### Added
 
 - Configuration for Bash
+- Todo list to install basic packages on a new machine
 
 ### Fixed
 
