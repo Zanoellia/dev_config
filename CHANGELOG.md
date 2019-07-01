@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## 2019, Q3
+
+### Added
+
+- Git: `gitignore_global` file
+
+### Fixed
+
+- Emacs: warning about paths
+
 ## 2018, Q4
 
 ### Added

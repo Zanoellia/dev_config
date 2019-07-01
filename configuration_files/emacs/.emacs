@@ -1,8 +1,8 @@
 ;;; Global config
-(add-to-list 'load-path "~/.emacs.d/")
+(add-to-list 'load-path "$HOME/.emacs.d/modes")
 
 ;;; Load modes
-(setq custom-modes "~/.emacs.d/modes.el")
+(setq custom-modes "$HOME/.emacs.d/modes.el")
 (load custom-modes)
 
 ;; Turn off mouse interface early in startup to avoid momentary display

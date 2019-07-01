@@ -24,6 +24,7 @@
 	whitespace = warn,trailing-space,tab-in-indent
 	# Enable diff-so-fancy. Put an extra emphasis on the changed parts.
 	pager = diff-so-fancy | less --tabs=4 -RFX
+	excludesfile = $HOME/.gitignore_global
 
 [pager]
 	# Pre-seed your less pager with a search pattern, move between files
@@ -89,6 +90,7 @@
 [interactive]
 	# Diffs shown by the interactive patch-staging tool also uses
 	# diff-so-fancy
+	# WARNING: troubles with UBUNTU 18
 	diffFilter = diff-so-fancy | less --tabs=4 -RFX
 
 # NOTES
