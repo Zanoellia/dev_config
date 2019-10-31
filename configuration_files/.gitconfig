@@ -41,20 +41,37 @@
 	default = simple
 
 [alias]
-	# My own shortcuts
 	co = checkout
 	s = status -s
 	st = status
-	rz = reset --hard HEAD
-	rzrc = reset --hard baseline/rc
+	ds = diff --staged
+	# See created commits by the last command. usage ex: git new HEAD
+	new = !sh -c 'git log $1@{1}..$1@{0} "$@"'
+	rzc = reset HEAD^
+	rzh = reset --hard HEAD
+	rzma = reset --hard origin/master
+	rzob = !CBR=$(git symbolic-ref --short HEAD) && git reset --hard origin/${CBR}
+	sur = submodule update --init --recursive
+	# list branches sorted by last modified
+	b = "!git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'"
+	ls = log --oneline
+	lsn = log --oneline -n 10
+	# List fetched commits with stats
+	lc = log ORIG_HEAD.. --stat --no-merges
 	lol = log --graph --pretty=tformat:'%C(yellow)%h%Creset -%C(auto)%d%Creset %s - %C(magenta)%an%Creset %C(green dim)- %ar%Creset'
 	lola = log --graph --pretty=tformat:'%C(yellow)%h%Creset -%C(auto)%d%Creset %s - %C(magenta)%an%Creset %C(green dim)- %ar%Creset' --all
 	can = commit --amend --no-edit
 	# Display the name of the current branch
-	cbr = "!git branch | grep \"^\\*\" | cut -d \" \" -f 2"
+	cbr = symbolic-ref --short HEAD
 	# For a raw diff to save as a patch for emailing or later application
 	# which can then be used as `git patch > changes.patch`
 	patch = !git --no-pager diff --no-color
+	rbm = "!f() { \
+	      git stash; \
+	      git fetch origin master; \
+	      git rebase origin/master; \
+	      git stash pop; \
+	      }; f"
 
 [merge]
 	tool = meld
@@ -108,3 +125,4 @@
 #   - https://git-scm.com/book/tr/v2/Customizing-Git-Git-Configuration
 #   - https://gist.github.com/tdd/470582
 #   - https://github.com/blog/2188-git-2-9-has-been-released#beautiful-diffs
+#   - https://www.atlassian.com/blog/git/advanced-git-aliases
