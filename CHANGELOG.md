@@ -6,7 +6,7 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
-- Git: `gitignore_global` file
+- Git: `gitignore_global` file and lot of aliases
 
 ### Fixed
 
