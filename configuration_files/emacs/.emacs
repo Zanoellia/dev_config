@@ -1,5 +1,5 @@
 ;;; Global config
-(add-to-list 'load-path "$HOME/.emacs.d/modes")
+(add-to-list 'load-path "$HOME/.emacs.d/")
 
 ;;; Load modes
 (setq custom-modes "$HOME/.emacs.d/modes.el")
