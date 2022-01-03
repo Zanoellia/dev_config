@@ -3,21 +3,40 @@
 #    . ~/.bash_juliette
 # fi
 
+# A command-line fuzzy finder
+# https://github.com/junegunn/fzf
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
 # DEV
+
+# Java
+export PATH=$PATH:$JAVA_HOME/bin
 
 # Git diff
 export PATH="$PATH:$HOME/.git/diff-so-fancy:$HOME/.git/diff-highlight"
 
-# Display git and rvm in prompt
-find_gemset() {
-  rvm_gemset=$(rvm-prompt g 2> /dev/null)
-}
-PROMPT_COMMAND="find_gemset; $PROMPT_COMMAND"
+# PROMPT CUSTOMIZATION
 
+# rvm
+#find_gemset() {
+#  rvm_gemset=$(rvm-prompt g 2> /dev/null)
+#}
+# PROMPT_COMMAND="find_gemset; $PROMPT_COMMAND"
+
+# git branch
 # sources : https://github.com/jimeh/git-aware-prompt
 export GITAWAREPROMPT=~/.bash/git-aware-prompt
 source $GITAWAREPROMPT/main.sh
-export PS1="\[$txtylw\]\$(ruby -v | cut -f2 -d' ' | cut -f1 -d'p')\[$txtylw\]\$rvm_gemset\[$txtpur\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\u:\w$ "
+
+# k8s context + namespace
+# https://github.com/jonmosco/kube-ps1
+export KUBE_PS1_SYMBOL_PADDING=false
+KUBE_PS1_SEPARATOR=' '
+KUBE_PS1_CTX_COLOR=blue
+KUBE_PS1_NS_COLOR=cyan
+source $HOME/.bash/kube-ps1/kube-ps1.sh
+
+export PS1="\$(kube_ps1)\[$txtpur\]\$git_branch\[$txtred\]\$git_dirty\[$txtylw\]\u\[$txtrst\]:\w$ "
 
 # SYSTEM UTILITIES
 
@@ -59,4 +78,26 @@ function my_ip()
     MY_IP=$(/sbin/ifconfig eth0 | awk '/inet/ { print $2 } ' |
       sed -e s/addr://)
     echo ${MY_IP:-"Not connected"}
+}
+
+# ALIASES
+
+# BASH SHORTCUT
+alias j='jobs'
+alias rmtd='rm -f *.*~ *.*# #*#'
+alias mkdir='mkdir -pv'
+alias c='clear'
+
+# DEV ALIASES
+alias plantuml='java -jar /usr/local/bin/plantuml.jar'
+alias e='emacs -nw'
+
+# VARIOUS
+alias meteo='curl wttr.in/75002?format=v2'
+
+alias_help()
+{
+  f=~/.bashrc
+  my_aliases=$(egrep '^\s*alias\s+.+=' ${f}|sed -r 's/\s*alias\s+(.+)=\".+\"(\s*#\s*(.+))?/\1: \3;/')
+  echo $my_aliases|tr ';' '\n'
 }
